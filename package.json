@@ -1,0 +1,16 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "jade": "*",
+    "hbs": "~2.4.0",
+    "nedb": "~0.8.9",
+    "jQuery": "~1.7.4",
+    "bootstrap": "0.0.2"
+  }
+}
