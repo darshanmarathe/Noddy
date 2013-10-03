@@ -7,7 +7,7 @@ exports.mynodds =function(req , res) {
 	console.log(req.isAuthenticated());
 	if (!req.isAuthenticated()) {res.redirect('/')};
 	_userRepo.getusers(function(users) {
-		res.render('members/mynodds', { title: 'Noddy haan' , model : users  , layout : 'userLayout'} );
+		res.render('members/mynodds', { title: 'Noddy haan' , model : users  , user : req.user , layout : 'userLayout'} );
 	});
 	
 }

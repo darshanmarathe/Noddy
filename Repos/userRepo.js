@@ -25,16 +25,18 @@ var Datastore = require('nedb')
 
 
 exports.getuser = function(username ,  onDone) {
-  	 return db.find({'Email' : username}, function(err , docs) {
-  	 	console.log("fetching data for logging")
+  	 console.log("fetching data for getuser")
+     return db.find({'Email' : username}, function(err , docs) {
+  	 console.log(docs.length)
   	 	onDone(docs);
   	 });
   }
 
 
   exports.getuserByID =function(id , onDone) {
+      console.log("fetching data for getuserByID")
   	 return db.find({'_id' : id}, function(err , docs) {
-  	 	console.log("fetching data for logging")
+  	  console.log(docs.length)
   	 	onDone(docs);
   	 });
   }
