@@ -50,7 +50,7 @@
     ctrols.each(function() {
       var id  = $(this).attr('id');
       console.log(id);
-      $(this).attr('name' , id);
+      $(this).attr('name' , 'user[' + id.replace('txt' , '')+ ']');
     });
   }
   

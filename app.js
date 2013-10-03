@@ -7,7 +7,8 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 
-
+var passport =  require('passport');
+var passportConfig = require('./modules/mod_passport')
 /*
 Route dependencies
 */
@@ -28,6 +29,11 @@ app.set('views', __dirname + '/views');
 //app.set('view engine', 'jade');
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
+
+app.use(express.cookieParser());
+app.use(express.session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
