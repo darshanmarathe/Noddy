@@ -1,7 +1,58 @@
- <h1>{{title}}</h1>
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Members</a></li>
+  <li class="active">Data</li>
+</ol>
 
-<ul>
-{{#each model}}
-  <li>{{this.Email}}</li>
+<h1>Users <small> Noddy users </small></h1>
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+   <table class="table table-striped">
+ 
+<thead>
+	<tr>
+<td>
+	Email
+</td>
+
+<td>
+	Password
+</td>
+
+<td>
+	First Name
+</td>
+
+<td>
+	Last Name
+</td>
+
+	</tr>
+
+</thead>
+ {{#each model}}
+  <tr>
+<td>
+	{{this.Email}}
+</td>
+<td>
+		{{this.Password}}
+</td>
+<td>
+	{{this.FirstName}}
+</td>
+<td>
+	{{this.LastName}}
+</td>
+  </tr>
+  
   {{/each}}
-</ul>
+</table>
+
+  </div>
+  <div class="col-xs-6 col-md-4"><pre>
+<b>Note : </b>
+Some important notes also can be mentained here...
+</pre></div>
+</div>
+
