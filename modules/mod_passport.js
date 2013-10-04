@@ -8,9 +8,15 @@ passport.use(new LocalStrategy(
       
   		if (user.length == 0) {
 
-			return done(null, false, { message: 'Incorrect username or password.' });
+			   return done(null, false, { message: 'Incorrect username or password.' });
   		}else{
-  			return done(null, user);
+       console.log((user[0].Password.toString() == password)); 
+        if (user[0].Password.toString() == password) {
+    			
+          return done(null, user);
+        }else{
+          return done(null, false, { message: 'Incorrect username or password.' });
+        }
   		}
   			
   	});

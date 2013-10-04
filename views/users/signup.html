@@ -1,7 +1,9 @@
 <div class="form-signup">
-<h2>Sign up for Noddy! </h2>
+<h2>{{title}} </h2>
 <hr>
-
+{{#if islooged}}
+ <h1>logged in </h1>
+  {{/if}}
 <form class="form-horizontal" id="frmSignUp" method="post" action="signup" role="form">
   <div class="form-group">
     <label for="txtEmail" class="col-lg-2 control-label">Email</label>

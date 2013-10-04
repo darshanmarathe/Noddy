@@ -7,14 +7,15 @@ var _userRepo = require('./../Repos/userRepo');
 
 exports.signup = function(req, res){
 	if (req.isAuthenticated()) {
-		res.render('users/signup', { title: 'Darn you are already logged in' , layout: "userLayout" });
+		res.render('users/signup', { title: 'Darn you are already logged in' , layout: "userLayout" , islooged : req.isAuthenticated()});
 		};
-  res.render('users/signup', { title: 'Welcome to Noddy - your node js stop' , layout: "userLayout" });
+  res.render('users/signup', { title: 'Welcome to Noddy - your node js stop' });
 };
 
 
 exports.signupPost =function(req , res) {
 	var user = req.body.user;
+	delete user.ConfPassword;
 	_userRepo.insertUser(user);
 	res.redirect('users/login');
 }
