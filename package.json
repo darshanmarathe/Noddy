@@ -13,6 +13,7 @@
     "jQuery": "~1.7.4",
     "bootstrap": "0.0.2",
     "passport": "~0.1.17",
-    "passport-local": "~0.1.6"
+    "passport-local": "~0.1.6",
+    "codemirror": "~3.18.0"
   }
 }
