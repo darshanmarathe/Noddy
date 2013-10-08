@@ -5,7 +5,7 @@ var passport =  require('passport')
 passport.use(new LocalStrategy(
   function(username, password, done) {
   	_userRepo.getuser(username, function(user){
-      
+      console.log(user[0]);
   		if (user.length == 0) {
 
 			   return done(null, false, { message: 'Incorrect username or password.' });

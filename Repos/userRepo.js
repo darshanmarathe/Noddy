@@ -1,5 +1,5 @@
 var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'db/noddy.db', autoload: true });
+  , db = new Datastore({ filename: 'db/noddy.users.db', autoload: true });
 
 
 

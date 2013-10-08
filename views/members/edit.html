@@ -1,44 +1,54 @@
 
+
 <ol class="breadcrumb">
   <li><a href="/members/mynodds">Home</a></li>
-  <li class="active">Create Nodd</li>
+  <li class="active">Edit Nodd</li>
 </ol>
+
 
 
 <div class="row">
 
   <div class="col-xs-12 col-sm-8 col-lg-8">
-  <form  id="frmCreateNodd" action="create" method="post" role="form" style="margin:20px">
+  <form  id="frmeditNodd" action="/Memebers/Edit" method="post" role="form" style="margin:20px">
    <h3>{{title}}</h3>
-  
+  <input type="hidden" name="nodd[_id]" value="{{model._id}}" />
+   <input type="hidden" name="nodd[ownedBy]" value="{{model.ownedBy}}" />
   <div class="form-group">
     <label for="txtTitle">Title</label>
-    <input type="text" required="required" class="form-control" id="txtTitle"  placeholder="Enter Title">
+    <input type="text" value="{{model.Title}}" required="required" class="form-control" id="txtTitle"  placeholder="Enter Title">
   </div>
-    <div class="form-group">
+  <div class="form-group">
     <label for="txtDescription">Description</label>
-   <textarea class="form-control codeArea" id="txtDescription" rows="5"></textarea>
+   <textarea class="form-control codeArea" id="txtDescription" rows="5">
+{{model.Description}} 
+   </textarea>
      <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
   </div>
-
+  
   <div class="form-group">
     <label for="txtClientSideCode">Client Side Code</label>
-   <textarea class="codeArea" id="txtClientSideCode" rows="10"></textarea>
+   <textarea class="codeArea" id="txtClientSideCode" rows="10">
+{{model.ClientSideCode}} 
+   </textarea>
      <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
   </div>
   <div class="form-group">
     <label for="txtServerSideCode">Server Side Code</label>
-   <textarea class="codeArea" id="txtServerSideCode" rows="10"></textarea>
+    
+   <textarea class="codeArea" id="txtServerSideCode" rows="10">
+{{model.ServerSideCode}} 
+   </textarea>
     <p class="help-block">Server side node js code.</p>
   </div>
   <div class="form-group">
     <label for="txtTags">Tags</label>
-    <input type="text" required="required" class="form-control" id="txtTags"  placeholder="Enter Tags">
+    <input type="text" value="{{model.Tags}}"  required="required" class="form-control" id="txtTags"  placeholder="Enter Tags" >
     <p class="help-block">Tags like Search , orm etc</p>
   </div>
   <div class="form-group">
     <label for="txtModules">Npm Modules</label>
-    <input type="text" required="required" class="form-control" id="txtModules"  placeholder="Enter Modules">
+    <input type="text" value="{{model.Modules}}"  required="required" class="form-control" id="txtModules"  placeholder="Enter Modules">
      <p class="help-block">Tags like express, hbs , passport etc</p>
   </div>
   <button type="submit" class="btn btn-success">Submit</button>
@@ -82,13 +92,11 @@ CodeMirror.commands.autocomplete = function(cm) {
     });
   }
   
-  Add_Name($('#frmCreateNodd :text'));
-  
-  Add_Name($('#frmCreateNodd :password'));
-
-  Add_Name($('#frmCreateNodd .codeArea'));
+  Add_Name($('#frmeditNodd :text'));
  
+   Add_Name($('#frmeditNodd .codeArea'));
+  Add_Name($('#frmeditNodd :password'));
 
 
-  Add_Name($("#frmCreateNodd input[type='email']"));
+  Add_Name($("#frmeditNodd input[type='email']"));
 </script>
