@@ -4,7 +4,11 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Welcome to Noddy - your node js stop' });
+	if (req.isAuthenticated()) {
+  res.render('index', { title: 'Welcome to Noddy - your node js stop' , layout : 'userLayout' });
+	}else{
+ res.render('index', { title: 'Welcome to Noddy - your node js stop' });
+	}
 };
 
 exports.about = function(req, res){

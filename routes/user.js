@@ -40,6 +40,6 @@ exports.define =   function(app, routes) {
 	app.get('/users/signIn' , routes.signIn);
 	app.get('/users/login' , routes.login);
 	app.post('/users/signin',
-  	passport.authenticate('local', { successRedirect: '/members/index',
+  	passport.authenticate('local', { successRedirect: '/members/mynodds',
                                    failureRedirect: '/users/login' }));
 }
