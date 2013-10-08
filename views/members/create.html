@@ -5,7 +5,7 @@
 <div class="row">
 
   <div class="col-xs-12 col-sm-8 col-lg-8">
-  <form  action="create" method="post" role="form" style="margin:20px">
+  <form  id="frmCreateNodd" action="create" method="post" role="form" style="margin:20px">
    <h3>{{title}}</h3>
   
   <div class="form-group">
@@ -62,4 +62,21 @@ CodeMirror.commands.autocomplete = function(cm) {
         CodeMirror.showHint(cm, CodeMirror.hint.javascript);
       };
 
+</script>
+
+<script >
+  function Add_Name(ctrols) {
+    ctrols.each(function() {
+      var id  = $(this).attr('id');
+      console.log(id);
+      $(this).attr('name' , 'nodd[' + id.replace('txt' , '')+ ']');
+    });
+  }
+  
+  Add_Name($('#frmCreateNodd :text'));
+  
+  Add_Name($('#frmCreateNodd :password'));
+
+
+  Add_Name($("#frmCreateNodd input[type='email']"));
 </script>

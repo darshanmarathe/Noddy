@@ -5,36 +5,30 @@
   	<tr>
   		<th>#</th>
   		<th>Title</th>
+      <th>Delete ?</th>
   	</tr>
   </thead>
   <tbody>
-  	<tr>	<td>1</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
+  {{#each model}}
+  <tr>
+<td>
+  {{this.srno}}
+</td>
+<td>
+    {{this.Title}}
+</td>
+<td>
 
- 	<tr>	<td>2</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
+<a href="/Memebers/DeleteNodd/{{this._id }}" onclick="return confitm('are you sure')?">
+Delete it
+</a>
+</td>
 
- 	<tr>	<td>3</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
+  </tr>
+  
+  {{/each}}
 
- 	<tr>	<td>4</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
-
- 	<tr>	<td>5</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
-
- 	<tr>	<td>6</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
-
- 	<tr>	<td>7</td>
-  		<td>dfasldn jdas;mdd lm fmasdmfmfsdm lfsmd j fds;mmfmsd;m mlfm  fdsm</td>
-  	</tr>
+ 
 
   </tbody>
 

@@ -27,16 +27,18 @@ var Datastore = require('nedb')
 exports.getuser = function(username ,  onDone) {
   	
      return db.find({'Email' : username}, function(err , docs) {
+      
   	 	onDone(docs);
   	 });
   }
 
 
   exports.getuserByID =function(id , onDone) {
-    
-  	 db.find({'_id' : id}, function(err , docs) {
-  
-  	 	onDone(docs);
-   });
+    return db.find({'_id' : id}, function(err , docs) {
+      
+      onDone(docs);
+     });
+  	 	
+   
   }
   

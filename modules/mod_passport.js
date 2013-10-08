@@ -10,7 +10,7 @@ passport.use(new LocalStrategy(
 
 			   return done(null, false, { message: 'Incorrect username or password.' });
   		}else{
-       console.log((user[0].Password.toString() == password)); 
+      
         if (user[0].Password.toString() == password) {
     			
           return done(null, user);
@@ -30,14 +30,13 @@ passport.use(new LocalStrategy(
 
 
 passport.serializeUser(function(user, done) {
-    done(null, user);
+    done(null, user[0]._id);
 });
 
 passport.deserializeUser(function(id, done) {
-   _userRepo.getuserByID(id, function(user){
-  		if (user != null) {
-   			done(null, user);
-   		}
-   	});
-
+  _userRepo.getuserByID(id , function(user) {
+   
+    done(null, user[0]._id);
+  })
+   			
 });

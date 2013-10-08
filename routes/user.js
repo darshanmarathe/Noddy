@@ -14,6 +14,7 @@ exports.signup = function(req, res){
 
 
 exports.signupPost =function(req , res) {
+	console.log(req.body.user);
 	var user = req.body.user;
 	delete user.ConfPassword;
 	_userRepo.insertUser(user);
@@ -31,9 +32,7 @@ exports.signIn = function(req, res) {
 }
 
 
-exports.signInPost = function(req, res) {
- 	res.send("Sign in process still to be created");	
-}
+
 
 exports.define =   function(app, routes) {
 	app.get('/users/signup', routes.signup);
