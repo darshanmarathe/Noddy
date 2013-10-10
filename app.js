@@ -1,4 +1,4 @@
-console.log("Test")
+
 /**
  * Module dependencies.
  */
