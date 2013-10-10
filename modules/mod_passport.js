@@ -21,11 +21,7 @@ passport.use(new LocalStrategy(
   			
   	});
 
-   		
-   	
-
-   
-  }
+   }
 ));
 
 

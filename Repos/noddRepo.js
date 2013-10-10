@@ -3,7 +3,10 @@ var Datastore = require('nedb')
 
 
 exports.insertNodd = function(nodd) {
+nodd.CreatedOn = new Date();
+nodd.UpdatedOn = new Date();
 console.log(nodd);
+
 		db.insert(nodd, function(err) {
   		if (err) {
   			console.log(err);
@@ -39,6 +42,7 @@ console.log(nodd);
   }
 
 exports.updateNodd  = function(nodd , onDone) {
+    nodd.UpdatedOn = new Date();
   db.update({ _id: nodd._id }, nodd, {}, function (err, numReplaced) {
   
     onDone();
