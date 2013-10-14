@@ -1,5 +1,9 @@
-var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'db/noddy.nodds.db', autoload: true });
+var databaseUrl = "sa:ds@ds053497.mongolab.com:53497/noddydb"; // "username:password@example.com/mydb"
+
+var collections = ["users", "nodds"]
+var mongojs = require("mongojs");
+var ObjectId = mongojs.ObjectId;
+var db = require("mongojs").connect(databaseUrl, collections);
 
 
 exports.insertNodd = function(nodd) {
@@ -7,7 +11,7 @@ nodd.CreatedOn = new Date();
 nodd.UpdatedOn = new Date();
 console.log(nodd);
 
-		db.insert(nodd, function(err) {
+		db.nodds.save(nodd, function(err) {
   		if (err) {
   			console.log(err);
   			return;
@@ -19,7 +23,7 @@ console.log(nodd);
 
 //TODO :: Need to implement the user id 
   exports.getNodds = function(id  , onDone) {
-  	return db.find({ownedBy : id}, function(err , docs) {
+  	return db.nodds.find({ownedBy : id}, function(err , docs) {
       
       onDone(docs);
      });
@@ -27,7 +31,7 @@ console.log(nodd);
 
 
   exports.getNodd = function(id  , onDone) {
-    return db.find({_id  : id }, function(err , docs) {
+    return db.nodds.find({_id: ObjectId(id)  }, function(err , docs) {
       
       onDone(docs[0]);
      });
@@ -35,15 +39,16 @@ console.log(nodd);
   
 
   exports.DeleteNodd = function(id , onDone) {
-  	
-     db.remove({ _id: id }, {}, function (err, numRemoved) {
+  	console.log(id);
+     db.nodds.remove({ _id: ObjectId(id) }, true ,function (err) {
         onDone();
     });
   }
 
 exports.updateNodd  = function(nodd , onDone) {
     nodd.UpdatedOn = new Date();
-  db.update({ _id: nodd._id }, nodd, {}, function (err, numReplaced) {
+    console.log(nodd);
+     db.nodds.update({ _id: ObjectId(nodd._id) },{$set :nodd}, function (err) {
   
     onDone();
 });

@@ -5,14 +5,12 @@ var passport =  require('passport')
 passport.use(new LocalStrategy(
   function(username, password, done) {
   	_userRepo.getuser(username, function(user){
-      console.log(user[0]);
-  		if (user.length == 0) {
+      	if (user.length == 0) {
 
 			   return done(null, false, { message: 'Incorrect username or password.' });
   		}else{
       
         if (user[0].Password.toString() == password) {
-    			
           return done(null, user);
         }else{
           return done(null, false, { message: 'Incorrect username or password.' });
@@ -26,13 +24,15 @@ passport.use(new LocalStrategy(
 
 
 passport.serializeUser(function(user, done) {
-    done(null, user[0]._id);
+    done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
-  _userRepo.getuserByID(id , function(user) {
+passport.deserializeUser(function(user, done) {
+ done(false , user);
+ 
+//  _userRepo.getuserByID(id , function(user) {
    
-    done(null, user[0]._id);
-  })
+//    done(null, user);
+ // })
    			
 });
