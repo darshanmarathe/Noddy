@@ -43,12 +43,12 @@
   </div>
   <div class="form-group">
     <label for="txtTags">Tags</label>
-    <input type="text" value="{{model.Tags}}"  required="required" class="form-control" id="txtTags"  placeholder="Enter Tags" >
+    <input type="text" value="{{model.Tags}}"  class="form-control" id="txtTags"  placeholder="Enter Tags" >
     <p class="help-block">Tags like Search , orm etc</p>
   </div>
   <div class="form-group">
     <label for="txtModules">Npm Modules</label>
-    <input type="text" value="{{model.Modules}}"  required="required" class="form-control" id="txtModules"  placeholder="Enter Modules">
+    <input type="text" value="{{model.Modules}}"   class="form-control" id="txtModules"  placeholder="Enter Modules">
      <p class="help-block">Tags like express, hbs , passport etc</p>
   </div>
   <button type="submit" class="btn btn-success">Submit</button>
@@ -109,4 +109,10 @@ CodeMirror.commands.autocomplete = function(cm) {
 
 
   Add_Name($("#frmeditNodd input[type='email']"));
+   jQuery("#txtTags").tagsManager({
+      prefilled: '{{model.Tags}}'
+    });
+  jQuery("#txtModules").tagsManager({
+      prefilled: '{{model.Modules}}'
+    });
 </script>

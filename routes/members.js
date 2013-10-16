@@ -4,7 +4,7 @@ var _noddRepo = require('./../Repos/noddRepo');
 var _ = require('underscore');
 exports.mynodds = function (req, res) {
     console.log(req.isAuthenticated());
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     _noddRepo.getNodds(req.user[0].Email, function (docs) {
         var count = 1;
         _.each(docs, function (item) {
@@ -14,7 +14,7 @@ exports.mynodds = function (req, res) {
     })
 }
 exports.index = function (req, res) {
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     _noddRepo.getNodds(req.user[0].Email, function (docs) {
         var count = 1;
         _.each(docs, function (item) {
@@ -24,11 +24,11 @@ exports.index = function (req, res) {
     })
 }
 exports.create = function (req, res) {
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     res.render('members/create', { title: 'Create your Nodd.', user: req.user[0], layout: 'userLayout' });
 }
 exports.createPost = function (req, res) {
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     var nodd = req.body.nodd;
     nodd.ownedBy = req.user[0].Email;
     nodd.updatedBy = req.user[0].Email;
@@ -40,19 +40,19 @@ exports.logout = function (req, res) {
     res.redirect('/');
 }
 exports.DeleteNodd = function (req, res) {
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     _noddRepo.DeleteNodd(req.params.id, function (_blog) {
         res.redirect('members/index');
     });
 };
 exports.EditNodd = function (req, res) {
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     _noddRepo.getNodd(req.params.id, function (Nodd) {
         res.render('members/edit', { title: 'Edit nodd', model: Nodd, user: req.user[0], layout: 'userLayout' });
     });
 }
 exports.UpdateNodd = function (req, res) {
-    if (!req.isAuthenticated()) {res.redirect('/');return;};
+    if (!req.isAuthenticated()) {res.redirect('/users/login');return;};
     var nodd = req.body.nodd;
     nodd.updatedBy = req.user[0].Email;
     _noddRepo.updateNodd(nodd, function () {
