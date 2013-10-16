@@ -28,3 +28,4 @@
 {"ts":1381907519961,"patch":[[{"diffs":[[0,"odd.id;\n"],[1,"    console.log(id)\n"],[0,"    dele"]],"start1":1169,"start2":1169,"length1":16,"length2":36}]],"length":1339,"saved":false}
 {"ts":1381907599110,"patch":[[{"diffs":[[0," = nodd."],[1,"_"],[0,"id;\n    "]],"start1":1165,"start2":1165,"length1":16,"length2":17}]],"length":1340,"saved":false}
 {"ts":1381907707070,"patch":[[{"diffs":[[0,"id;\n"],[-1,"    console.log(id)"],[0,"\n   "]],"start1":1174,"start2":1174,"length1":27,"length2":8},{"diffs":[[0,"d; \n"],[-1,"    console.log(nodd);\n"],[0,"    "]],"start1":1197,"start2":1197,"length1":31,"length2":8}]],"length":1298,"saved":false}
+{"ts":1381914115068,"patch":[[{"diffs":[[0,"    "],[-1,"  console.log(\"GetNodd ..\" + id + \"...\"  + docs);      "],[0,"\n   "]],"start1":808,"start2":808,"length1":63,"length2":8},{"diffs":[[0,"{\n  "],[-1,"\tconsole.log(id);"],[0,"\n   "]],"start1":898,"start2":898,"length1":25,"length2":8}]],"length":1226,"saved":false}

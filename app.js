@@ -1,14 +1,14 @@
-
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 
 var express = require('express');
 var http = require('http');
 var path = require('path');
 var MongoStore = require('connect-mongo')(express);
+var hbs = require('hbs').__express;
 
-var passport =  require('passport');
+var passport = require('passport');
 var passportConfig = require('./modules/mod_passport')
 /*
 Route dependencies
@@ -17,8 +17,6 @@ Route dependencies
 var routes_index = require('./routes/index');
 var routes_user = require('./routes/user');
 var routes_members = require('./routes/members');
-
-
 
 var app = express();
 
@@ -29,16 +27,17 @@ app.set('views', __dirname + '/views');
 //Changed the default view engine to handlebar
 //app.set('view engine', 'jade');
 app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
+app.engine('html', hbs);
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(express.cookieParser());
 app.use(express.session({
-    secret: 'keyboard cat' ,
+    secret: 'keyboard cat',
+    cookie: { maxAge: 600000 },
     store: new MongoStore({
-      url : 'mongodb://sa:ds@ds053497.mongolab.com:53497/noddydb'
+        url: 'mongodb://sa:ds@ds053497.mongolab.com:53497/noddydb'
     })
-  }));
+}));
 //app.use(express.session({ secret: }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -51,39 +50,36 @@ app.use(app.router);
 app.use('/public', express.static(__dirname + '/public'));
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
+DefineRoughts(app, routes_index);
+DefineRoughts(app, routes_user);
+DefineRoughts(app, routes_members);
 
+app.use(function (req, res, next) {
+    res.status(404);
 
-DefineRoughts(app , routes_index);
-DefineRoughts(app , routes_user);
-DefineRoughts(app , routes_members);
+    // respond with html page
+    if (req.accepts('html')) {
+        res.render('404', { url: req.url });
+        return;
+    }
 
-app.use(function(req, res, next){
-  res.status(404);
+    // respond with json
+    if (req.accepts('json')) {
+        res.send({ error: 'Not found' });
+        return;
+    }
 
-  // respond with html page
-  if (req.accepts('html')) {
-    res.render('404', { url: req.url });
-    return;
-  }
-
-  // respond with json
-  if (req.accepts('json')) {
-    res.send({ error: 'Not found' });
-    return;
-  }
-
-  // default to plain-text. send()
-  res.type('txt').send('Not found');
+    // default to plain-text. send()
+    res.type('txt').send('Not found');
 })
 
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
 });
 
-function DefineRoughts (app , routes) {
-	routes.define(app , routes);
+function DefineRoughts(app, routes) {
+    routes.define(app, routes);
 }

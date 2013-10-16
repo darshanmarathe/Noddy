@@ -31,14 +31,14 @@ nodd.UpdatedOn = new Date();
 
   exports.getNodd = function(id  , onDone) {
     return db.nodds.find({_id: ObjectId(id)}, function(err , docs) {
-      console.log("GetNodd .." + id + "..."  + docs);      
+    
       onDone(docs[0]);
      });
   }
   
 
   exports.DeleteNodd = function(id , onDone) {
-  	console.log(id);
+  
      db.nodds.remove({ _id: ObjectId(id) }, true ,function (err) {
         onDone();
     });
