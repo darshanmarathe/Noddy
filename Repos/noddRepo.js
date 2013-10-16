@@ -9,7 +9,7 @@ var db = require("mongojs").connect(databaseUrl, collections);
 exports.insertNodd = function(nodd) {
 nodd.CreatedOn = new Date();
 nodd.UpdatedOn = new Date();
-console.log(nodd);
+
 
 		db.nodds.save(nodd, function(err) {
   		if (err) {
@@ -24,15 +24,14 @@ console.log(nodd);
 //TODO :: Need to implement the user id 
   exports.getNodds = function(id  , onDone) {
   	return db.nodds.find({ownedBy : id}, function(err , docs) {
-      
       onDone(docs);
      });
   }
 
 
   exports.getNodd = function(id  , onDone) {
-    return db.nodds.find({_id: ObjectId(id)  }, function(err , docs) {
-      
+    return db.nodds.find({_id: ObjectId(id)}, function(err , docs) {
+      console.log("GetNodd .." + id + "..."  + docs);      
       onDone(docs[0]);
      });
   }
@@ -47,8 +46,10 @@ console.log(nodd);
 
 exports.updateNodd  = function(nodd , onDone) {
     nodd.UpdatedOn = new Date();
-    console.log(nodd);
-     db.nodds.update({ _id: ObjectId(nodd._id) },{$set :nodd}, function (err) {
+    var id  = nodd._id;
+
+    delete nodd._id; 
+     db.nodds.update( { _id: ObjectId(id) },{$set: nodd}, function (err) {
   
     onDone();
 });
