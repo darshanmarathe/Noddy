@@ -5,13 +5,17 @@ var _ = require('underscore');
 exports.define = function(app , routes) {
     
     app.get('/api/tags/' , routes.Get_all_Tags);
-    
+     app.get('/api/tags' , routes.Get_all_Tags);
 }
 
 
 exports.Get_all_Tags =function(req , res) {
     _tagRepo.getTags( function (docs) {
-        res.send(docs);
+        var arr = new Array();
+        _.each(docs , function (d) {
+            arr.push(d.TagName);
+        })
+        res.send(arr);
     })
 }
 

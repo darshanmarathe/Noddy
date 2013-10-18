@@ -121,3 +121,15 @@ exports.Get_Nodds_By_Tag = function (tag , onDone){
      onDone(docs)
  });
  }
+ 
+ 
+exports.Get_Nodds_By_Text = function (module , onDone){
+ 
+    var regex = new RegExp(["^",module,"$"].join(""),"i");
+    var regexLike = new RegExp([module].join(""),"i");
+    console.log(regexLike + " " +  regex);
+ db.nodds.find({ $or: [{Modules : regex} ,{ Tags : regex } , {Title : regexLike} , {Description : regexLike} ] } , function (err , docs) {
+   
+     onDone(docs)
+ });
+ }

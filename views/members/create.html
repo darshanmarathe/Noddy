@@ -87,7 +87,7 @@ CodeMirror.commands.autocomplete = function(cm) {
   function Add_Name(ctrols) {
     ctrols.each(function() {
       var id  = $(this).attr('id');
-      console.log(id);
+     
       $(this).attr('name' , 'nodd[' + id.replace('txt' , '')+ ']');
     });
   }
@@ -104,5 +104,8 @@ CodeMirror.commands.autocomplete = function(cm) {
   
   
   jQuery("#txtTags").tagsManager();
+  
   jQuery("#txtModules").tagsManager();
+  
+   
 </script>
