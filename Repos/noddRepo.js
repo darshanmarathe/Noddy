@@ -5,6 +5,7 @@ var mongojs = require("mongojs");
 var ObjectId = mongojs.ObjectId;
 var db = require("mongojs").connect(databaseUrl, collections);
 var _tagRepo = require("./../Repos/tagRepo");
+var _moduleRepo = require("./../Repos/modulesRepo");
 
 
 exports.insertNodd = function(nodd) {
@@ -12,13 +13,21 @@ nodd.CreatedOn = new Date();
 nodd.UpdatedOn = new Date();
 if (nodd.Tags != undefined || nodd.Tags !== "") {
     nodd.Tags = nodd.Tags.split(',');
-    for(Tag in nodd.Tags){
-        _tagRepo.insertTags(Tag);
+       
+    for (var i = 0; i < (nodd.Tags.length); i++) {
+            var _tag = new Object();
+            _tag.TagName = nodd.Tags[i];
+            _tagRepo.insertTags(_tag);
     }
 }
 
 if (nodd.Modules != undefined || nodd.Modules !== "") {
     nodd.Modules = nodd.Modules.split(',');
+      for (var i = 0; i < (nodd.Modules.length); i++) {
+            var _module = new Object();
+            _module.ModuleName = nodd.Modules[i];
+            _moduleRepo.insertModules(_module);
+    }
 }
 
 		db.nodds.save(nodd, function(err) {
@@ -66,9 +75,24 @@ exports.updateNodd  = function(nodd , onDone) {
     var id  = nodd._id;
    if (nodd.Tags != undefined || nodd.Tags !== "") {
     nodd.Tags = nodd.Tags.split(',');
+
+for (var i = 0; i < (nodd.Tags.length); i++) {
+    
+        var _tag = new Object();
+        _tag.TagName = nodd.Tags[i];
+        _tagRepo.insertTags(_tag);
+}
+        
+
    }
     if (nodd.Modules != undefined || nodd.Modules !== "") {
     nodd.Modules = nodd.Modules.split(',');
+        for (var i = 0; i < (nodd.Modules.length); i++) {
+            var _module = new Object();
+            _module.ModuleName = nodd.Modules[i];
+            _moduleRepo.insertModules(_module);
+    }   
+    
    }
     delete nodd._id; 
      db.nodds.update( { _id: ObjectId(id) },{$set: nodd}, function (err) {
@@ -76,3 +100,24 @@ exports.updateNodd  = function(nodd , onDone) {
     onDone();
 });
 }
+
+
+
+exports.Get_Nodds_By_Tag = function (tag , onDone){
+ 
+    var regex = new RegExp(["^",tag,"$"].join(""),"i");
+ db.nodds.find({Tags : regex } , function (err , docs) {
+   
+     onDone(docs)
+ });
+ }
+ 
+ 
+ exports.Get_Nodds_By_Module = function (module , onDone){
+ 
+    var regex = new RegExp(["^",module,"$"].join(""),"i");
+ db.nodds.find({Modules : regex } , function (err , docs) {
+   
+     onDone(docs)
+ });
+ }

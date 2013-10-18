@@ -18,6 +18,13 @@ var routes_index = require('./routes/index');
 var routes_user = require('./routes/user');
 var routes_members = require('./routes/members');
 
+/*
+API dependencies
+*/
+var api_nodd = require('./api/nodd');
+var api_module = require('./api/modules');
+var api_tags = require('./api/tags');
+
 var app = express();
 
 // all environments
@@ -56,6 +63,11 @@ if ('development' == app.get('env')) {
 DefineRoughts(app, routes_index);
 DefineRoughts(app, routes_user);
 DefineRoughts(app, routes_members);
+
+//defineing roughts for api
+DefineRoughts(app , api_nodd);
+DefineRoughts(app , api_module);
+DefineRoughts(app , api_tags);
 
 app.use(function (req, res, next) {
     res.status(404);

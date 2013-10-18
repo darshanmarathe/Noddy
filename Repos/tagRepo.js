@@ -8,7 +8,7 @@ var db = require("mongojs").connect(databaseUrl, collections);
 
 exports.insertTags = function(tag) {
     Private_getTag(tag , function (_tag) {
-        if (_tag == null)
+        if (_tag == null || _tag == undefined)
         {
         	db.tags.save(tag, function(err) {
           		if (err) {
@@ -24,21 +24,21 @@ exports.insertTags = function(tag) {
 
 
 //TODO :: Need to implement the user id 
-  exports.getTags = function(name  , onDone) {
+  exports.getTags = function( onDone) {
   	return db.tags.find({}, function(err , docs) {
       onDone(docs);
      });
   }
 
 
-  exports.getTag = function(id  , onDone) {
+  exports.getTag = function(name  , onDone) {
     return db.tags.find({TagName : name}, function(err , docs) {
           onDone(docs[0]);
      });
   }
   
-  function Private_getTag(id  , onDone) {
-    return db.tags.find({TagName : name}, function(err , docs) {
+  function Private_getTag(tag  , onDone) {
+    return db.tags.find({TagName : tag.TagName}, function(err , docs) {
           onDone(docs[0]);
      });
   }
