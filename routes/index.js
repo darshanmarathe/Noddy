@@ -20,8 +20,14 @@ exports.contact  = function(req , res) {
 }
 
 
+exports.api = function(req , res){
+    res.render('apidoc' , {title : 'Noddy Api documantation'} )
+    
+}
+
 exports.define = function(app , routes) {
 	app.get('/', routes.index);
+	app.get('/api' , routes.api)
 	app.get('/index', routes.index);
 	app.get('/about', routes.about);
 	app.get('/contact' , routes.contact);
