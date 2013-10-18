@@ -45,6 +45,16 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    <script>
+        
+         function SetNavActive(url){
+          var select = "a[href='"+ url +"']";
+   
+        $('.active').removeClass('active')
+       $(select).parent().addClass('active'); 
+      }
+      
+    </script>
 
     <br><br><BR>
       
