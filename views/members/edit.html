@@ -1,61 +1,58 @@
-
-
 <ol class="breadcrumb">
-  <li><a href="/members/mynodds">Home</a></li>
-  <li class="active">Edit Nodd</li>
+    <li>
+        <a href="/members/mynodds">Home</a>
+    </li>
+    <li class="active">Edit Nodd</li>
 </ol>
-
-
-
 <div class="row">
-
-  <div class="col-xs-12 col-sm-8 col-lg-8">
-  <form  id="frmeditNodd" action="/Memebers/Edit" method="post" role="form" style="margin:20px">
-   <h3>{{title}}</h3>
-  <input type="hidden" name="nodd[_id]" value="{{model._id}}" />
-   <input type="hidden" name="nodd[ownedBy]" value="{{model.ownedBy}}" />
-  <div class="form-group">
-    <label for="txtTitle">Title</label>
-    <input type="text" value="{{model.Title}}" required="required" class="form-control" id="txtTitle"  placeholder="Enter Title">
-  </div>
-  <div class="form-group">
-    <label for="txtDescription">Description</label>
-   <textarea class="form-control codeArea" id="txtDescription" rows="5">
-{{model.Description}} 
-   </textarea>
-     <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
-  </div>
-  
-  <div class="form-group">
-    <label for="txtClientSideCode">Client Side Code</label>
-   <textarea class="codeArea" id="txtClientSideCode" rows="10">
-{{model.ClientSideCode}} 
-   </textarea>
-     <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
-  </div>
-  <div class="form-group">
-    <label for="txtServerSideCode">Server Side Code</label>
-    
-   <textarea class="codeArea" id="txtServerSideCode" rows="10">
-{{model.ServerSideCode}} 
-   </textarea>
-    <p class="help-block">Server side node js code.</p>
-  </div>
-  <div class="form-group">
-    <label for="txtTags">Tags</label>
-    <input type="text" value="{{model.Tags}}"  class="form-control" id="txtTags"  placeholder="Enter Tags" >
-    <p class="help-block">Tags like Search , orm etc</p>
-  </div>
-  <div class="form-group">
-    <label for="txtModules">Npm Modules</label>
-    <input type="text" value="{{model.Modules}}"   class="form-control" id="txtModules"  placeholder="Enter Modules">
-     <p class="help-block">Tags like express, hbs , passport etc</p>
-  </div>
-  <button type="submit" class="btn btn-success">Submit</button>
-  <button type="reset" class="btn btn-default">Reset</button>
-</form>
-  </div>
-  <div class="col-xs-6 col-sm-4 col-lg-4">For Server side code you can use ctrl + space to activate auto complete for javascript </div>
+    <div class="col-xs-12 col-sm-8 col-lg-8">
+        <form id="frmeditNodd" action="/Memebers/Edit" method="post" role="form"
+        style="margin:20px">
+            <h3>{{title}}</h3>
+            <input type="hidden" name="nodd[_id]" value="{{model._id}}"
+            />
+            <input type="hidden" name="nodd[ownedBy]" value="{{model.ownedBy}}" />
+            <div class="form-group">
+                <label for="txtTitle">Title</label>
+                <input type="text" value="{{model.Title}}" required="required"
+                class="form-control" id="txtTitle" placeholder="Enter Title">
+            </div>
+            <div class="form-group">
+                <label for="txtDescription">Description</label>
+                <textarea class="form-control codeArea" id="txtDescription"
+                rows="5">{{model.Description}}</textarea>
+                <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
+            </div>
+            <div class="form-group">
+                <label for="txtClientSideCode">Client Side Code</label>
+                <textarea class="codeArea" id="txtClientSideCode"
+                rows="10">{{model.ClientSideCode}}</textarea>
+                <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
+            </div>
+            <div class="form-group">
+                <label for="txtServerSideCode">Server Side Code</label>
+                <textarea class="codeArea" id="txtServerSideCode"
+                rows="10">{{model.ServerSideCode}}</textarea>
+                <p class="help-block">Server side node js code.</p>
+            </div>
+            <div class="form-group">
+                <label for="txtTags">Tags</label>
+                <input type="text" value="{{model.Tags}}" class="form-control"
+                id="txtTags" placeholder="Enter Tags">
+                <p class="help-block">Tags like Search , orm etc</p>
+            </div>
+            <div class="form-group">
+                <label for="txtModules">Npm Modules</label>
+                <input type="text" value="{{model.Modules}}" class="form-control"
+                id="txtModules" placeholder="Enter Modules">
+                <p class="help-block">Tags like express, hbs , passport etc</p>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+        </form>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-lg-4">For Server side code you can use ctrl + space to activate auto complete
+        for javascript</div>
 </div>
 <link rel=stylesheet href="/public/CodeMirror/lib/codemirror.css">
 <link rel="stylesheet" href="/public/CodeMirror/theme/ambiance.css">
@@ -68,51 +65,50 @@
 <script src="/public/CodeMirror/mode/htmlmixed/htmlmixed.js"></script>
 <script src="/public/CodeMirror/addon/edit/closetag.js"></script>
 <script src="/public/CodeMirror/addon/edit/closebrackets.js"></script>
-
 <script>
- var editor = CodeMirror.fromTextArea(document.getElementById("txtClientSideCode"), {
-    lineNumbers: true,
-    matchBrackets: true,
-    autoCloseBrackets: true,
-    mode: 'text/html',
-    theme : "ambiance",
-     autoCloseTags: true
-  });
- var editor = CodeMirror.fromTextArea(document.getElementById("txtServerSideCode"), {
-    lineNumbers: true,
-    matchBrackets: true,
-    autoCloseBrackets: true,
-    mode: 'text/javascript',
-    theme : "ambiance",
-    extraKeys: {"Ctrl-Space": "autocomplete"}
-  });
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtClientSideCode"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        mode: 'text/html',
+        theme: "ambiance",
+        autoCloseTags: true
+    });
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtServerSideCode"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        mode: 'text/javascript',
+        theme: "ambiance",
+        extraKeys: {
+            "Ctrl-Space": "autocomplete"
+        }
+    });
 
-CodeMirror.commands.autocomplete = function(cm) {
+    CodeMirror.commands.autocomplete = function(cm) {
         CodeMirror.showHint(cm, CodeMirror.hint.javascript);
-      };
-
+    };
 </script>
+<script>
+    function Add_Name(ctrols) {
+        ctrols.each(function() {
+            var id = $(this).attr('id');
+            console.log(id);
+            $(this).attr('name', 'nodd[' + id.replace('txt', '') + ']');
+        });
+    }
 
-<script >
-  function Add_Name(ctrols) {
-    ctrols.each(function() {
-      var id  = $(this).attr('id');
-      console.log(id);
-      $(this).attr('name' , 'nodd[' + id.replace('txt' , '')+ ']');
+    Add_Name($('#frmeditNodd :text'));
+
+    Add_Name($('#frmeditNodd .codeArea'));
+    Add_Name($('#frmeditNodd :password'));
+
+
+    Add_Name($("#frmeditNodd input[type='email']"));
+    jQuery("#txtTags").tagsManager({
+        prefilled: '{{model.Tags}}'
     });
-  }
-  
-  Add_Name($('#frmeditNodd :text'));
- 
-   Add_Name($('#frmeditNodd .codeArea'));
-  Add_Name($('#frmeditNodd :password'));
-
-
-  Add_Name($("#frmeditNodd input[type='email']"));
-   jQuery("#txtTags").tagsManager({
-      prefilled: '{{model.Tags}}'
-    });
-  jQuery("#txtModules").tagsManager({
-      prefilled: '{{model.Modules}}'
+    jQuery("#txtModules").tagsManager({
+        prefilled: '{{model.Modules}}'
     });
 </script>

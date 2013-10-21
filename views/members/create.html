@@ -1,53 +1,58 @@
-
 <ol class="breadcrumb">
-  <li><a href="/members/mynodds">Home</a></li>
-  <li class="active">Create Nodd</li>
+    <li>
+        <a href="/members/mynodds">Home</a>
+    </li>
+    <li class="active">Create Nodd</li>
 </ol>
-
-
 <div class="row">
-
-  <div class="col-xs-12 col-sm-8 col-lg-8">
-  <form  id="frmCreateNodd" action="create" method="post" role="form" style="margin:20px">
-   <h3>{{title}}</h3>
-  
-  <div class="form-group">
-    <label for="txtTitle">Title</label>
-    <input type="text" required="required" class="form-control" id="txtTitle"  placeholder="Enter Title">
-  </div>
-    <div class="form-group">
-    <label for="txtDescription">Description</label>
-   <textarea class="form-control codeArea" id="txtDescription" rows="5"></textarea>
-     <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
-  </div>
-
-  <div class="form-group">
-    <label for="txtClientSideCode">Client Side Code</label>
-   <textarea class="codeArea" id="txtClientSideCode" rows="10"></textarea>
-     <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
-  </div>
-  <div class="form-group">
-    <label for="txtServerSideCode">Server Side Code</label>
-   <textarea class="codeArea" id="txtServerSideCode" rows="10"></textarea>
-    <p class="help-block">Server side node js code.</p>
-  </div>
-  <div class="form-group">
-    <label for="txtTags">Tags</label>
-    <input type="text" class="form-control" id="txtTags"  placeholder="Enter Tags">
-    <p class="help-block">Tags like Search , orm etc</p>
-  </div>
-  <div class="form-group">
-    <label for="txtModules">Npm Modules</label>
-    <input type="text"  class="form-control" id="txtModules"  placeholder="Enter Modules">
-     <p class="help-block">Tags like express, hbs , passport etc</p>
-  </div>
-  <button type="submit" class="btn btn-success">Submit</button>
-  <button type="reset" class="btn btn-default">Reset</button>
-</form>
-  </div>
-  <div class="col-xs-6 col-sm-4 col-lg-4">For Server side code you can use ctrl + space to activate auto complete for javascript </div>
+    <div class="col-xs-12 col-sm-8 col-lg-8">
+        <form id="frmCreateNodd" action="create" method="post" role="form" style="margin:20px">
+            <h3>{{title}}</h3>
+            <div class="form-group">
+                <label for="txtTitle">Title</label>
+                <input type="text" required="required" class="form-control"
+                id="txtTitle" placeholder="Enter Title">
+            </div>
+            <div class="form-group">
+                <label for="txtDescription">Description</label>
+                <textarea class="form-control codeArea" id="txtDescription"
+                rows="5"></textarea>
+                <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
+            </div>
+            <div class="form-group">
+                <label for="txtClientSideCode">Client Side Code</label>
+                <textarea class="codeArea" id="txtClientSideCode"
+                rows="10"></textarea>
+                <p class="help-block">Code which is going to run on client side html, css, javascript.</p>
+            </div>
+            <div class="form-group">
+                <label for="txtServerSideCode">Server Side Code</label>
+                <textarea class="codeArea" id="txtServerSideCode"
+                rows="10"></textarea>
+                <p class="help-block">Server side node js code.</p>
+            </div>
+            <div class="form-group">
+                <label for="txtTags">Tags</label>
+                <input type="text" class="form-control" id="txtTags" placeholder="Enter Tags">
+                <p class="help-block">Tags like Search , orm etc</p>
+            </div>
+            <div class="form-group">
+                <label for="txtModules">Npm Modules</label>
+                <input type="text" class="form-control" id="txtModules"
+                placeholder="Enter Modules">
+                <p class="help-block">Tags like express, hbs , passport etc</p>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+        </form>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-lg-4">For Server side code you can use ctrl + space to activate auto complete
+        for javascript
+        <div class="alert alert-danger">Also make sure you are not adding anything unethical to noddy for example
+            some IP code of somebody else noddy is not responsible for this kind of
+            actions</div>
+    </div>
 </div>
-
 <link rel=stylesheet href="/public/CodeMirror/lib/codemirror.css">
 <link rel="stylesheet" href="/public/CodeMirror/theme/ambiance.css">
 <script src="/public/CodeMirror/lib/codemirror.js"></script>
@@ -58,54 +63,54 @@
 <script src="/public/CodeMirror/mode/css/css.js"></script>
 <script src="/public/CodeMirror/mode/htmlmixed/htmlmixed.js"></script>
 <script src="/public/CodeMirror/addon/edit/closetag.js"></script>
-<script src="/public/CodeMirror/addon/edit/closebrackets.js"></script>  
+<script src="/public/CodeMirror/addon/edit/closebrackets.js"></script>
 <script>
- var editor = CodeMirror.fromTextArea(document.getElementById("txtClientSideCode"), {
-    lineNumbers: true,
-    matchBrackets: true,
-    autoCloseBrackets: true,
-    mode: 'text/html',
-    theme : "ambiance",
-     autoCloseTags: true
-  });
- var editor = CodeMirror.fromTextArea(document.getElementById("txtServerSideCode"), {
-    lineNumbers: true,
-    matchBrackets: true,
-    autoCloseBrackets: true,
-    mode: 'text/javascript',
-    theme : "ambiance",
-    extraKeys: {"Ctrl-Space": "autocomplete"}
-  });
-
-CodeMirror.commands.autocomplete = function(cm) {
-        CodeMirror.showHint(cm, CodeMirror.hint.javascript);
-      };
-
-</script>
-
-<script >
-  function Add_Name(ctrols) {
-    ctrols.each(function() {
-      var id  = $(this).attr('id');
-     
-      $(this).attr('name' , 'nodd[' + id.replace('txt' , '')+ ']');
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtClientSideCode"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        mode: 'text/html',
+        theme: "ambiance",
+        autoCloseTags: true
     });
-  }
-  
-  Add_Name($('#frmCreateNodd :text'));
-  
-  Add_Name($('#frmCreateNodd :password'));
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtServerSideCode"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        mode: 'text/javascript',
+        theme: "ambiance",
+        extraKeys: {
+            "Ctrl-Space": "autocomplete"
+        }
+    });
 
-  Add_Name($('#frmCreateNodd .codeArea'));
- 
+    CodeMirror.commands.autocomplete = function(cm) {
+        CodeMirror.showHint(cm, CodeMirror.hint.javascript);
+    };
+</script>
+<script>
+    function Add_Name(ctrols) {
+        ctrols.each(function() {
+            var id = $(this).attr('id');
+
+            $(this).attr('name', 'nodd[' + id.replace('txt', '') + ']');
+        });
+    }
+
+    Add_Name($('#frmCreateNodd :text'));
+
+    Add_Name($('#frmCreateNodd :password'));
+
+    Add_Name($('#frmCreateNodd .codeArea'));
 
 
-  Add_Name($("#frmCreateNodd input[type='email']"));
-  
-  
-  jQuery("#txtTags").tagsManager();
-  
-  jQuery("#txtModules").tagsManager();
-  
-  SetNavActive( "/members/create");
+
+    Add_Name($("#frmCreateNodd input[type='email']"));
+
+
+    jQuery("#txtTags").tagsManager();
+
+    jQuery("#txtModules").tagsManager();
+
+    SetNavActive("/members/create");
 </script>

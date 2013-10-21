@@ -1,134 +1,136 @@
-  <div class="jumbotron">
-      <div class="container">
-        <h1>Welcome to Noddy.tk  <small>CTP 2</h1>
-        <p>Noddy is a application which allows you to share and maintain a repository of your own node tricks</p>
-        <p><a class="btn btn-primary btn-lg" href="/users/signup">Sign up &raquo;</a></p>
-      </div>
-    </div>
-
+<div class="jumbotron">
     <div class="container">
-     
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Search By Tag</h2>
-         <div class="list-group">
-            <ul id="TagCloud">
-           
-       </ul>
-         <div id="myCanvasContainer">
- <canvas width="300" height="300" id="myCanvas">
-  <p>Anything in here will be replaced on browsers that support the canvas element</p>
-    
-       </canvas>
-       </div>
-       
+        <h1>Welcome to Noddy.tk
+            <small>CTP 2</h1>
+        <p>Noddy is a application which allows you to share and maintain a repository
+            of your own node tricks</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="/users/signup">Sign up &raquo;</a>
+        </p>
+    </div>
 </div>
-        </div>
+<div class="container">
+    <div class="row">
         <div class="col-lg-4">
-         <h2>Search By Module</h2>
+            <h2>Search By Tag</h2>
             <div class="list-group">
-       <ul id="ModuleCloud">
-           
-       </ul>
-           <div id="myCanvasContainerMod">
- <canvas width="300" height="300" id="myCanvasMod">
-  <p>Anything in here will be replaced on browsers that support the canvas element</p>
-    
-       </canvas>
-       </div>
-       </div>
-       </div>
+                <ul id="TagCloud"></ul>
+                <div id="myCanvasContainer">
+                    <canvas width="300" height="300" id="myCanvas">
+                        <p>Anything in here will be replaced on browsers that support the canvas
+                            element</p>
+                    </canvas>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-4">
-          <h2>About Noddy</h2>
-          <h3> So what is a nodd ? </h3>
-          <p>A Nodd is nothing but simple "node js receipe" , "node js trick" or "node js how to?" noddy helps you to record share this nodds with community and grow knowledge</p>
-          <p><a class="btn btn-default" href="/About">View details &raquo;</a></p>
+            <h2>Search By Module</h2>
+            <div class="list-group">
+                <ul id="ModuleCloud"></ul>
+                <div id="myCanvasContainerMod">
+                    <canvas width="300" height="300" id="myCanvasMod">
+                        <p>Anything in here will be replaced on browsers that support the canvas
+                            element</p>
+                    </canvas>
+                </div>
+            </div>
         </div>
-        
-         <div class="col-lg-4">
-         
-          <h3> So what's working ? </h3>
-          <ul>
-              <li>Registration (No varification)</li>
-              <li>Create / List / Update / Delete Nodds</li>
-              <li>Nodd Autocomplete</li>
-              <li>API Search</li>
-              <li>Tagging</li>
-          </ul>
-          <p><a class="btn btn-default" href="/About">View details &raquo;</a></p>
+        <div class="col-lg-4">
+            <h2>About Noddy</h2>
+            <h3>So what is a nodd ?</h3>
+            <p>A Nodd is nothing but simple "node js receipe" , "node js trick" or "node
+                js how to?" noddy helps you to record share this nodds with community and
+                grow knowledge</p>
+            <p>
+                <a class="btn btn-default" href="/About">View details &raquo;</a>
+            </p>
         </div>
-      </div>
-      </div>
-      <hr>
-      
-      <script type="text/javascript" >
+        <div class="col-lg-4">
+            <h3>So what's working ?</h3>
+            <ul>
+                <li>Registration (No varification)</li>
+                <li>Create / List / Update / Delete Nodds</li>
+                <li>Nodd Autocomplete</li>
+                <li>API Search</li>
+                <li>Tagging</li>
+            </ul>
+            <p>
+                <a class="btn btn-default" href="/About">View details &raquo;</a>
+            </p>
+        </div>
+    </div>
+</div>
+<hr>
+<script type="text/javascript">
+    (function() {
 
-          (function () {
+        $.ajax({
+            type: "GET",
+            url: "api/tags/",
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(msg) {
 
-              $.ajax({
-                  type: "GET",
-                  url: "api/tags/",
-                  data: "{}",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (msg) {
+                PrintTagCloud(msg);
+            }
+        });
 
-                      PrintTagCloud(msg);
-                  }
-              });
-
-              return false;
-          })();
-
-
-
-          (function () {
-
-              $.ajax({
-                  type: "GET",
-                  url: "api/modules/",
-                  data: "{}",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (msg) {
-
-                      PrintModuleCloud(msg);
-                  }
-              });
-
-              return false;
-          })();
-
-          function PrintTagCloud(TagList) {
-              for (var o in TagList) {
-
-                  $('#TagCloud').append("<li><a href='/api/nodds/tags/" + TagList[o] + "' target='_blank'>" + TagList[o] + "</a></li>")
-              }
-              setTimeout(function(){
-     
-                  $('#myCanvas').tagcanvas({
-                   textColour: '#ff0000',
-          outlineColour: '#ff00ff',
-                 outlineThickness : 1,
-                 maxSpeed : 0.03,
-                 depth : 0.75 } , 'TagCloud')}, 500);
-          }
+        return false;
+    })();
 
 
 
-          function PrintModuleCloud(TagList) {
-              for (var o in TagList) {
+    (function() {
 
-                  $('#ModuleCloud').append("<li><a href='/api/nodds/modules/" + TagList[o] + "' target='_blank'>" + TagList[o] + "</a></li>")
-              }
-                 setTimeout(function(){
-               
-                  $('#myCanvasMod').tagcanvas({
-                 textColour : '#1A39E8',
-                  outlineColour: '#1A39E8',
-                 outlineThickness : 1,
-                 maxSpeed : 0.03,
-                 depth : 0.75 } , 'ModuleCloud')}, 500);
-          }
-          
-      </script>
+        $.ajax({
+            type: "GET",
+            url: "api/modules/",
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(msg) {
+
+                PrintModuleCloud(msg);
+            }
+        });
+
+        return false;
+    })();
+
+    function PrintTagCloud(TagList) {
+        for (var o in TagList) {
+
+            $('#TagCloud').append("<li><a href='/nodds/search/tags/" + TagList[o] + "' >" + TagList[o] + "</a></li>")
+        }
+        setTimeout(function() {
+
+            $('#myCanvas').tagcanvas({
+                textColour: '#ff0000',
+                outlineColour: '#ff00ff',
+                outlineThickness: 1,
+                maxSpeed: 0.03,
+                depth: 0.75
+            }, 'TagCloud')
+        }, 500);
+    }
+
+
+
+    function PrintModuleCloud(TagList) {
+        for (var o in TagList) {
+
+            $('#ModuleCloud').append("<li><a href='/nodds/search/modules/" + TagList[o] + "'>" + TagList[o] + "</a></li>")
+        }
+        setTimeout(function() {
+
+            $('#myCanvasMod').tagcanvas({
+                textColour: '#1A39E8',
+                outlineColour: '#1A39E8',
+                outlineThickness: 1,
+                maxSpeed: 0.03,
+                depth: 0.75
+            }, 'ModuleCloud')
+        }, 500);
+    }
+</script>

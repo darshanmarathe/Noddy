@@ -1,6 +1,6 @@
 /**
-* Module dependencies.
-*/
+ * Module dependencies.
+ */
 
 var express = require('express');
 var http = require('http');
@@ -17,7 +17,7 @@ Route dependencies
 var routes_index = require('./routes/index');
 var routes_user = require('./routes/user');
 var routes_members = require('./routes/members');
-
+var routes_nodds = require('./routes/nodds');
 /*
 API dependencies
 */
@@ -40,7 +40,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.cookieParser());
 app.use(express.session({
     secret: 'keyboard cat',
-    cookie: { maxAge: 600000 },
+    cookie: {
+        maxAge: 600000
+    },
     store: new MongoStore({
         url: 'mongodb://sa:ds@ds053497.mongolab.com:53497/noddydb'
     })
@@ -63,24 +65,38 @@ if ('development' == app.get('env')) {
 DefineRoughts(app, routes_index);
 DefineRoughts(app, routes_user);
 DefineRoughts(app, routes_members);
+DefineRoughts(app, routes_nodds);
 
 //defineing roughts for api
-DefineRoughts(app , api_nodd);
-DefineRoughts(app , api_module);
-DefineRoughts(app , api_tags);
+DefineRoughts(app, api_nodd);
+DefineRoughts(app, api_module);
+DefineRoughts(app, api_tags);
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.status(404);
 
     // respond with html page
     if (req.accepts('html')) {
-        res.render('404', { url: req.url });
+        if (req.isAuthenticated()) {
+            res.render('404', {
+                user: req.user[0],
+                layout: 'userLayout',
+                url: req.url
+            })
+        }
+        else {
+            res.render('404', {
+                url: req.url
+            })
+        }
         return;
     }
 
     // respond with json
     if (req.accepts('json')) {
-        res.send({ error: 'Not found' });
+        res.send({
+            error: 'Not found'
+        });
         return;
     }
 
@@ -88,7 +104,7 @@ app.use(function (req, res, next) {
     res.type('txt').send('Not found');
 })
 
-http.createServer(app).listen(app.get('port'), function () {
+http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
 

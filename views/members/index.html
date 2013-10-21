@@ -1,54 +1,41 @@
 <h1>{{title}}</h1>
-
-<table class="table table-striped table-hover table-condensed" style="width:90%">
-  <thead>
-  	<tr>
-  		<th>#</th>
-  		<th>Title</th>
-      <th>Description</th>
-      <th>Tags</th>
-      <th>Modules</th>
-      <th>Delete ?</th>
-  	</tr>
-  </thead>
-  <tbody>
-  {{#each model}}
-  <tr>
-<td>
-  {{this.srno}}
-</td>
-<td>
-  <a href="/Memebers/Edit/{{this._id }}">
+<table class="table table-striped table-hover table-condensed"
+style="width:90%">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Tags</th>
+            <th>Modules</th>
+            <th>Delete ?</th>
+        </tr>
+    </thead>
+    <tbody>{{#each model}}
+        <tr>
+            <td>{{this.srno}}</td>
+            <td>
+                <a href="/Memebers/Edit/{{this._id }}">
     {{this.Title}}
     </a>
-</td>
-<td>{{this.Description}}</td>
-<td>{{this.Tags}}</td>
-<td>{{this.Modules}}</td>
-<td>
-
-<a href="javascript:Delete_Confirm('/Memebers/DeleteNodd/{{this._id }}');" onclick="return confitm('are you sure')?">
+            </td>
+            <td>{{this.Description}}</td>
+            <td>{{this.Tags}}</td>
+            <td>{{this.Modules}}</td>
+            <td>
+                <a href="javascript:Delete_Confirm('/Memebers/DeleteNodd/{{this._id }}');"
+                onclick="return confitm('are you sure')?">
 Delete it
 </a>
-</td>
-
-  </tr>
-  
-  {{/each}}
-
- 
-
-  </tbody>
-
+            </td>
+        </tr>{{/each}}</tbody>
 </table>
-<script >
+<script>
+    function Delete_Confirm(path) {
+        if (confirm('Are you sure you wanna delete the nodds')) {
+            window.location = path
 
-  function Delete_Confirm (path) {
-    if (confirm('Are you sure you wanna delete the nodds')) {
-        window.location = path
 
-
-    };
-  }
-
+        };
+    }
 </script>
