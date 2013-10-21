@@ -102,7 +102,7 @@
     function PrintTagCloud(TagList) {
         for (var o in TagList) {
 
-            $('#TagCloud').append("<li><a href='../../nodds/search/tags/" + TagList[o] + "'>" + TagList[o] + "</a></li>")
+            $('#TagCloud').append("<li><a href='/nodds/search/tags/" + TagList[o] + "'>" + TagList[o] + "</a></li>")
         }
         setTimeout(function() {
 
@@ -121,7 +121,7 @@
     function PrintModuleCloud(TagList) {
         for (var o in TagList) {
 
-            $('#ModuleCloud').append("<li><a href='../../nodds/search/modules/" + TagList[o] + "'>" + TagList[o] + "</a></li>")
+            $('#ModuleCloud').append("<li><a href='/nodds/search/modules/" + TagList[o] + "'>" + TagList[o] + "</a></li>")
         }
         setTimeout(function() {
 
