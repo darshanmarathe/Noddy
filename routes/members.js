@@ -101,6 +101,22 @@ exports.UpdateNodd = function(req, res) {
         res.redirect('members/index');
     });
 }
+
+
+exports.profile = function(req, res) {
+
+    if (!req.isAuthenticated()) {
+        res.redirect('/users/login');
+        return;
+    };
+
+    res.render('members/profile', {
+        title: 'Create your Nodd.',
+        user: req.user[0],
+        layout: 'userLayout'
+    });
+}
+
 exports.define = function(app, routes) {
     app.get('/members/', routes.index);
     app.get('/members/index', routes.index);
@@ -112,4 +128,5 @@ exports.define = function(app, routes) {
     app.post('/Memebers/Edit', routes.UpdateNodd);
     app.get('/members/mynodds', routes.mynodds);
     app.get('/members/logout', routes.logout)
+    app.get('/members/profile', routes.profile);
 }

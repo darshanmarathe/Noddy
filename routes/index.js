@@ -39,6 +39,14 @@ exports.api = function(req, res) {
 
 }
 
+exports.Email = function(req , res){
+    res.render('Email/index', {
+        title: 'Noddy email template',
+        layout: ''
+    })
+    
+}
+
 
 exports.Profile = function(req, res) {
     _userRepo.getuser(req.params.id, function(user) {
@@ -67,5 +75,6 @@ exports.define = function(app, routes) {
     app.get('/index', routes.index);
     app.get('/about', routes.about);
     app.get('/contact', routes.contact);
-    app.get('/Profile/:id', routes.Profile)
+    app.get('/Profile/:id', routes.Profile);
+    app.get('/Email' , routes.Email);
 }
