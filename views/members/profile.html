@@ -4,5 +4,34 @@ Email :>
 
 {{model.Email}}
 <br>
-{{model.FirstName}} {{model.LastName}}
 
+First Name :
+<input type="text" name="FirstName" value="{{model.FirstName}}"/><br>
+Last Name :
+<input type="text" name="FirstName" value="{{model.LastName}}"/> <br>
+About Me :
+<textarea name="aboutme">About me {{mode.aboutme}}</textarea> <br>
+Picture <input type="text" id="txtimgurl" name="FirstName" value="{{model.imgurl}}"/>
+<img id="img" data-src="holder.js/140x140" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAADCklEQVR42u3Y60obQQCGYe//Ujyhoj8ERUFFRRHxLIKKR1TwFrbMwBaNadOvNG02fX48xNlZHcK82d048f7+3sCvmhh0AnwkGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIoIhIhgigiEiGCKCISIYIp0P5vT0tJmcnGz29/e/zO3u7n6Zu76+bjY3N5v5+fn6enNzM3CNf7neqOlsMK+vr3Vjpqam+m7g8/NzMzMz82nu5eWlnr+wsNA8PT3V1zIux0dtvVHV2WDKppQNWl5e7ruBW1tbdYM+zp2dndXxzs5OHW9sbNTx5eVls7a2Vn++uLiocycnJ3W8vr4+lPUGvb9R1dlgjo+Pm9vb27o5vRt4f3/fLC0tNXt7e5/mDg8P67jcOsq4vYUcHR3VK8Ds7Gzd9HK1mJubq4GU48NYb9D7G1WdDabVbwPL1aJcKXrnDg4OPo3bDSzHy7jd4PZKUa4yw1yvi8YumPKQWW4b/eYGfeLf3t6+P4f86FnjT67XRWMXTDvuVY6Xq0D5eXt7u57b+0zR/m65vXzc6GGt10VjF8zP5so3nfY5pfdby+PjYzM9Pd0sLi7W88rX4DJ3d3c3lPUGva9R9V8FUzw8PNRPfO//RVZWVuq5V1dXdXx+fl7Hq6urA//m76zXVZ0Phr9LMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEBENEMEQEQ0QwRARDRDBEvgHSYkhjuU2fGQAAAABJRU5ErkJggg==" class="img-rounded" alt="140x140" style="width: 140px; height: 140px;">
+<br>
+About me  <textarea name="aboutme">About me {{mode.aboutme}}</textarea>  <br>
+Why Node <textarea name="aboutme">About me {{mode.aboutme}}</textarea>  <br>
+Whats in my Mind  <textarea name="aboutme">About me {{mode.aboutme}}</textarea> <br>
+Website <input type="text" name=""/> <br>
+Blog <input type="text" name=""/> <br>
+Open Source work   <br>
+	Provider  Project Name RepoLink <br>
+	Provider  Project Name RepoLink <br>
+	Provider  Project Name RepoLink <br>
+	Provider  Project Name RepoLink  +-<br>
+Technologies I know  <br>
+	Name Of Technology  Starter|Fighter|Ninja +-<br> 
+
+<script type="text/javascript" >
+    
+    $('#txtimgurl').change(function(){
+        $('#img').attr('src' , $(this).val());
+        
+    });
+    
+</script>

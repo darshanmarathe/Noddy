@@ -112,7 +112,7 @@ exports.profile = function(req, res) {
 
     res.render('members/profile', {
         title: 'Create your Nodd.',
-        user: req.user[0],
+        model: req.user[0],
         layout: 'userLayout'
     });
 }

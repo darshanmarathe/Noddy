@@ -20,9 +20,19 @@ exports.index = function(req, res) {
 };
 
 exports.about = function(req, res) {
-    res.render('about', {
-        title: 'About Node tricks'
+if (req.isAuthenticated()) {
+        res.render('about', {
+            title: 'About Noddy',
+            user: req.user[0],
+            layout: 'userLayout'
+        });
+    }
+    else {
+         res.render('about', {
+        title: 'About Noddy'
     });
+    }
+   
 };
 
 exports.contact = function(req, res) {

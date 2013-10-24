@@ -1,55 +1,141 @@
-<h1>About Noddy </h2>
-
-<ul>
-    <li>Credits</li>
-    <li>Why CRUD with node is that bad ?</li>
-    <li>Version 1 Goals</li>
-    <li>Roadmap</li>
-	<li>The Book</li>
-    <li>Other Resources</li>
-    <li>Version 2 Goals</li>
-</ul>
-<h3>Credits</h3>
-Darshan Marathe <br>
-Twitter : @darshanmarathe <br>
-Website : http://www.darshanmarathe.com <br>
-Email   : darshanmarathe at gmail.com <br>
-
-<h3>Version 1 goals</h3>
-<ul>
-    <li>Basic HTML app and crud with node.js</li>
-    <li>Bookmarking cloning the nodd</li>
-    <li>Following / unFollowing people</li>
-    <li>Search Nodds </li>
-    <li>Filter By Tags /Package</li>
-    
-</ul>
-<h3>Roadmap</h3>
-<h4>CTP 2</h4>
-<ol>
-    <li>CRUD Nodd</li>
-    <li>Registration / Login </li>
-    <li>Auth</li>
-    <li>Integrating session</li>
+<ol class="breadcrumb">
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>About</li>
 </ol>
-<h4>CTP 3</h4>
-<ol>
-    <li>Search Nodds</li>
-    <li>View Profile</li>
-    <li>List nodds by Tags</li>
-    <li>List noodd by Modules</li>
-</ol>
-
-<h4>CTP 4</h4>
-<ol>
-    <li>Recent Nodds on Home Page</li>
-    <li>Search Working</li>
-    <li>Follow / UnFollow Users </li>
-    <li>Bookmark / Clone Nodds</li>
-</ol>
-
-<script type="text/javascript" >
-    
-    
-    SetNavActive("/about");
-</script>
+<h1>About Noddy</h2>
+    <ul class="nav nav-pills nav-stacked" style="width:20%;float:left"
+    id="myTab">
+        <li>
+            <a href="#Credits" data-toggle="tab" class="active">Credits</a>
+        </li>
+        <li>
+            <a href="#Goals" data-toggle="tab">Goals</a>
+        </li>
+        <li>
+            <a href="#CRUD" data-toggle="tab">CRUD is bad ?</a>
+        </li>
+        <li>
+            <a href="#roadmap" data-toggle="tab">RoadMap</a>
+        </li>
+        <li>
+            <a href="#changelog" data-toggle="tab">Change Log</a>
+        </li>
+        <li>
+            <a href="#book" data-toggle="tab">Book</a>
+        </li>
+    </ul>
+    <div class="tab-content" style="width:78%;float:right">
+        <div class="tab-pane active" id="Credits">
+            <h3>Credits</h3>Darshan Marathe
+            <br>Twitter : @darshanmarathe
+            <br>Website : http://www.darshanmarathe.com
+            <br>Email : darshanmarathe at gmail.com
+            <br>
+        </div>
+        <div class="tab-pane" id="Goals">
+            <h3>Version 1 goals</h3>
+            <ul>
+                <li>Basic HTML app and crud with node.js</li>
+                <li>Bookmarking cloning the nodd</li>
+                <li>Following / unFollowing people</li>
+                <li>Search Nodds</li>
+                <li>Filter By Tags /Package</li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="CRUD">
+            <h3>Why CRUD with node is that bad ?</h3>
+            <p>Really it's not</p>
+            <p>Right now node.js do not have frameworks like rails or nDjango which make
+                ruby or python productiv but with node we are avoiding whole learning curve
+                of learning ruby or anything else.</p>
+            <p>So don't worry and start coding...</p>
+        </div>
+        <div class="tab-pane" id="changelog">
+            <h3>Change Log</h3>
+            <h4>CTP 1</h4>
+            <ol>
+                <li>Mockups</li>
+                <li>Basic Routing</li>
+                <li>Trail of Crud</li>
+                <li>Trail of Security</li>
+                <li>Learning basic monogo skills</li>
+            </ol>
+            <h4>CTP 2</h4>
+            <ol>
+                <li>CRUD Nodd</li>
+                <li>Registration / Login</li>
+                <li>Auth</li>
+                <li>Integrating session</li>
+                <li>API changes</li>
+            </ol>
+            <h4>CTP 3</h4>
+            <ol>
+                <li>Search Nodds</li>
+                <li>List nodds by Tags</li>
+                <li>List noodd by Modules</li>
+                <li>Search Working</li>
+            </ol>
+        </div>
+        <div class="tab-pane" id="roadmap">
+            <h3>Roadmap</h3>
+            <h4>CTP 1</h4>
+            <ol>
+                <li>Mockups</li>
+                <li>Basic Routing</li>
+                <li>Trail of Crud</li>
+                <li>Trail of Security</li>
+                <li>Learning basic monogo skills</li>
+            </ol>
+            <h4>CTP 2</h4>
+            <ol>
+                <li>CRUD Nodd</li>
+                <li>Registration / Login</li>
+                <li>Auth</li>
+                <li>Integrating session</li>
+                <li>API changes</li>
+            </ol>
+            <h4>CTP 3</h4>
+            <ol>
+                <li>Search Nodds</li>
+                <li>List nodds by Tags</li>
+                <li>List noodd by Modules</li>
+                <li>Search Working</li>
+                <li>Database PROD / Dev Sepration</li>
+                <li>API changes</li>
+            </ol>
+            <h4>CTP 4</h4>
+            <ol>
+                <li>User Registration / Activation through mail</li>
+                <li>View Profile</li>
+                <li>Edit Profile</li>
+                <li>Follow / UnFollow Users</li>
+                <li>Bookmark / Clone Nodds</li>
+                <li>API changes</li>
+            </ol>
+            <h4>CTP 5</h4>
+            <ol>
+                <li>Dashboard</li>
+                <li>UI Changes Bootstrap</li>
+                <li>Video blog (Supported on youtube / viemo )</li>
+                <li>Chatrooms powered by socket.io and may be redis</li>
+                <li>Inter user messaging</li>
+                <li>Events</li>
+            </ol>
+        </div>
+        <div class="tab-pane" id="book">
+            <h3>The book</h3>
+            <p>Yes i was writing a book while learning but right now its way behind its
+                schedule so wait and watch.</p>
+            <script type="text/javascript">
+                SetNavActive("/about");
+                $('#myTab a:first').tab('show')
+            </script>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $('#myTab a:first').tab('show')
+        })
+    </script>
