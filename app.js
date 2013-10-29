@@ -43,8 +43,16 @@ app.engine('html', hbs);
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(express.cookieParser());
+app.use(express.session({
+    secret: 'keyboard cat',
+    cookie: {
+        maxAge: 600000
+    },
+    store: new MongoStore({
+        url: process.env.DBPATH
+    })
+}));
 
-//app.use(express.session({ secret: }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -70,15 +78,7 @@ DefineRoughts(app, api_module);
 DefineRoughts(app, api_tags);
 
 
-app.use(express.session({
-    secret: 'keyboard cat',
-    cookie: {
-        maxAge: 600000
-    },
-    store: new MongoStore({
-        url: process.env.DBPATH
-    })
-}));
+
 
 app.use(function(req, res, next) {
     res.status(404);

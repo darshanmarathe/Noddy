@@ -3,7 +3,7 @@ var _userRepo = require('./../Repos/userRepo');
 var _noddRepo = require('./../Repos/noddRepo');
 var _ = require('underscore');
 exports.mynodds = function(req, res) {
-    console.log(req.isAuthenticated());
+ console.log(req.isAuthenticated());
     if (!req.isAuthenticated()) {
         res.redirect('/users/login');
         return;
