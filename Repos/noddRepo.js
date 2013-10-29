@@ -1,9 +1,8 @@
-var databaseUrl = "sa:ds@ds053497.mongolab.com:53497/noddydb"; // "username:password@example.com/mydb"
 
 var collections = ["users", "nodds"]
 var mongojs = require("mongojs");
 var ObjectId = mongojs.ObjectId;
-var db = require("mongojs").connect(databaseUrl, collections);
+var db = require("mongojs").connect(process.env.DBPATH, collections);
 var _tagRepo = require("./../Repos/tagRepo");
 var _moduleRepo = require("./../Repos/modulesRepo");
 

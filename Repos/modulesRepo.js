@@ -1,9 +1,8 @@
-var databaseUrl = "sa:ds@ds053497.mongolab.com:53497/noddydb"; // "username:password@example.com/mydb"
 
 var collections = ["modules"]
 var mongojs = require("mongojs");
 var ObjectId = mongojs.ObjectId;
-var db = require("mongojs").connect(databaseUrl, collections);
+var db = require("mongojs").connect(process.env.DBPATH, collections);
 
 
 exports.insertModules = function(module) {

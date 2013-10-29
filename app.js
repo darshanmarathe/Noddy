@@ -5,11 +5,14 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var Config = require('./modules/mod_config')
+Config.GetEnv("Dev")();
 var MongoStore = require('connect-mongo')(express);
 var hbs = require('hbs').__express;
 
 var passport = require('passport');
 var passportConfig = require('./modules/mod_passport')
+
 /*
 Route dependencies
 */
@@ -27,6 +30,8 @@ var api_tags = require('./api/tags');
 
 var app = express();
 
+
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -38,15 +43,7 @@ app.engine('html', hbs);
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(express.cookieParser());
-app.use(express.session({
-    secret: 'keyboard cat',
-    cookie: {
-        maxAge: 600000
-    },
-    store: new MongoStore({
-        url: 'mongodb://sa:ds@ds053497.mongolab.com:53497/noddydb'
-    })
-}));
+
 //app.use(express.session({ secret: }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -71,6 +68,17 @@ DefineRoughts(app, routes_nodds);
 DefineRoughts(app, api_nodd);
 DefineRoughts(app, api_module);
 DefineRoughts(app, api_tags);
+
+
+app.use(express.session({
+    secret: 'keyboard cat',
+    cookie: {
+        maxAge: 600000
+    },
+    store: new MongoStore({
+        url: process.env.DBPATH
+    })
+}));
 
 app.use(function(req, res, next) {
     res.status(404);
