@@ -1,13 +1,13 @@
  function DevEnv(){
     
-    process.env.DBPATH = "mongodb://sa:ds@ds053497.mongolab.com:53497/noddydb";
+    process.env.DBPATH = "mongodb://localhost:27017/noddydb";
     
 }
 
 
  function ProdEnv(){
     
-    process.env.DBPATH =  "Some code changes checking on node";
+    process.env.DBPATH =  " mongodb://sa:ds@ds053497.mlab.com:53497/noddydb";
 
 }
 

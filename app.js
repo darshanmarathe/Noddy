@@ -6,7 +6,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var Config = require('./modules/mod_config')
-Config.GetEnv("Dev")();
+Config.GetEnv("PROD")();
 var MongoStore = require('connect-mongo')(express);
 var hbs = require('hbs').__express;
 

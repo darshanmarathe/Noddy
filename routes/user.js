@@ -55,4 +55,13 @@ exports.define = function(app, routes) {
         successRedirect: '/members/mynodds',
         failureRedirect: '/users/login'
     }));
+
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+    // handle the callback after facebook has authenticated the user
+    app.get('/users/facebook/callback',
+        passport.authenticate('facebook', {
+             successRedirect: '/members/mynodds',
+        failureRedirect: '/users/login'
+        }));
 }
