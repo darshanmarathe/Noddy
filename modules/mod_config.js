@@ -7,7 +7,7 @@
 
  function ProdEnv(){
     
-    process.env.DBPATH =  "mongodb://sa:ds@ds053497.mlab.com:53497/noddydb";
+    process.env.DBPATH =  " mongodb://sa:ds@ds042379.mlab.com:42379/noddy2";
 
 }
 
