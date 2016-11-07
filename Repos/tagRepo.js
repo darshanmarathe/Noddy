@@ -6,19 +6,28 @@ var ObjectId = mongojs.ObjectId;
 var db = require("mongojs").connect(process.env.DBPATH, collections);
 
 
-exports.insertTags = function(tag) {
+exports.insertTags = function(tag,onDone) {
     Private_getTag(tag , function (_tag) {
         if (_tag == null || _tag == undefined)
         {
-        	db.tags.save(tag, function(err) {
+        	db.tags.save({TagName : tag}, function(err,docInserted) {
           		if (err) {
           			console.log(err);
           			return;
           		};
-          		console.log("tag Saved");
+          		onDone(docInserted);
           	});
         }
     } );   
+}
+
+exports.updateTag = function (tag, onDone) {
+     var id = tag._id;
+    delete tag._id;
+    db.tags.update({ _id: ObjectId(id) }, { $set: tag }, function (err) {
+
+        onDone();
+    });
 }
 
 
@@ -43,10 +52,15 @@ exports.insertTags = function(tag) {
      });
   }
   
+exports.getTagById = function (_id, onDone) {
+    return db.tags.find({ _id: ObjectId(_id) }, function (err, docs) {
+        onDone(docs[0]);
 
-  exports.DeleteTag = function(id , onDone) {
+    });
+}
+  exports.DeleteTagById = function(id , onDone) {
   
-     db.tags.remove({TagName : name}, true ,function (err) {
+     db.tags.remove({ _id: ObjectId(id) }, true ,function (err) {
         onDone();
     });
   }
