@@ -6,10 +6,9 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var Config = require('./modules/mod_config')
-Config.GetEnv("PROD")();
+Config.GetEnv("DEV")();
 var MongoStore = require('connect-mongo')(express);
 var hbs = require('hbs').__express;
-
 var passport = require('passport');
 var passportConfig = require('./modules/mod_passport')
 
@@ -22,7 +21,7 @@ var routes_user = require('./routes/user');
 var routes_members = require('./routes/members');
 var routes_nodds = require('./routes/nodds');
 /*
-API dependencies
+API routes dependencies
 */
 var api_nodd = require('./api/nodd');
 var api_module = require('./api/modules');
