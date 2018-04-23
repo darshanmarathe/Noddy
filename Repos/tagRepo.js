@@ -3,7 +3,7 @@
 var collections = ["tags"]
 var mongojs = require("mongojs");
 var ObjectId = mongojs.ObjectId;
-var db = require("mongojs").connect(process.env.DBPATH, collections);
+var db = require("mongojs")(process.env.DBPATH, collections);
 
 
 exports.insertTags = function(tag,onDone) {

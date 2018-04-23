@@ -1,3 +1,2 @@
-#version files#
-################
-modules/mod_config.js
+node_modules/
+.vscode/

@@ -1,0 +1,1 @@
+nodemon --exec "npm start" -e js,json

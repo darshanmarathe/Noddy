@@ -2,7 +2,7 @@
 var collections = ["users", "nodds"]
 var mongojs = require("mongojs");
 var ObjectId = mongojs.ObjectId;
-var db = require("mongojs").connect(process.env.DBPATH, collections);
+var db = require("mongojs")(process.env.DBPATH, collections);
 var _tagRepo = require("./../Repos/tagRepo");
 var _moduleRepo = require("./../Repos/modulesRepo");
 

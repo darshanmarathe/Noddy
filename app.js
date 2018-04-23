@@ -2,32 +2,41 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var Config = require('./modules/mod_config')
+const express = require('express');
+const http = require('http');
+const path = require('path');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const favicon = require('serve-favicon')
+const Config = require('./modules/mod_config')
+const logger = require('morgan');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+const router = express.Router();
+const errorHandler = require('errorhandler')
 Config.GetEnv("DEV")();
-var MongoStore = require('connect-mongo')(express);
-var hbs = require('hbs').__express;
-var passport = require('passport');
-var passportConfig = require('./modules/mod_passport')
+
+const MongoStore = require('connect-mongo')(session);
+const hbs = require('hbs').__express;
+const passport = require('passport');
+const passportConfig = require('./modules/mod_passport')
 
 /*
 Route dependencies
 */
 
-var routes_index = require('./routes/index');
-var routes_user = require('./routes/user');
-var routes_members = require('./routes/members');
-var routes_nodds = require('./routes/nodds');
+const routes_index = require('./routes/index');
+const routes_user = require('./routes/user');
+const routes_members = require('./routes/members');
+const routes_nodds = require('./routes/nodds');
 /*
 API routes dependencies
 */
-var api_nodd = require('./api/nodd');
-var api_module = require('./api/modules');
-var api_tags = require('./api/tags');
+const api_nodd = require('./api/nodd');
+const api_module = require('./api/modules');
+const api_tags = require('./api/tags');
 
-var app = express();
+const app = express();
 
 
 
@@ -41,8 +50,9 @@ app.set('view engine', 'html');
 app.engine('html', hbs);
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.use(express.cookieParser());
-app.use(express.session({
+app.use(cookieParser());
+
+app.use(session({
     secret: 'keyboard cat',
     cookie: {
         maxAge: 600000
@@ -55,15 +65,15 @@ app.use(express.session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+app.use(logger('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
+
 app.use('/public', express.static(__dirname + '/public'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 // development only
 if ('development' == app.get('env')) {
-    app.use(express.errorHandler());
+    app.use(errorHandler());
 }
 
 DefineRoughts(app, routes_index);
