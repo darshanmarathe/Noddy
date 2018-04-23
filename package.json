@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "ts-node app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -29,5 +29,9 @@
     "passport-local": "~1.0.0",
     "serve-favicon": "^2.5.0",
     "underscore": "~1.9.0"
+  },
+  "devDependencies": {
+    "ts-node": "^6.0.0",
+    "typescript": "^2.8.3"
   }
 }
