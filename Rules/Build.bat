@@ -1,4 +1,4 @@
 cls 
 del dist/*.js
-call tsc Main.ts --lib es2017 --outDir dist
+call tsc 
 node dist/Main.js

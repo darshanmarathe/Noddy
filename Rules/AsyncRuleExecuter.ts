@@ -5,7 +5,7 @@ const _ = require("lodash");
 export class AsyncRuleExecuter implements IRuleEngine {
     constructor(private rules : Array < IRule >, public BreakOnFail = false) {}
 
-    async Execute() : Promise < Array < IRule >> {
+    async ExecuteAsync() : Promise < Array < IRule >> {
         let arrReturn: Array < IRule > = [];
         let depth = 0;
 

@@ -5,6 +5,9 @@
         "noImplicitAny": true,
         "outDir": "./dist",
         "sourceMap": true,
+        "lib": [
+            "es2017"
+        ]
     },
     "files": [
         "Main.ts"

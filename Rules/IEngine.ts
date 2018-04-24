@@ -2,6 +2,6 @@ import { IRule } from "./IRule";
 
 export interface IRuleEngine{
    
-    Execute(): Promise<Array<IRule>>;
+    ExecuteAsync(): Promise<Array<IRule>>;
     BreakOnFail:Boolean;
 }
