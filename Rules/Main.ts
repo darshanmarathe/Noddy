@@ -6,9 +6,9 @@ import { IRule } from './IRule';
 
 let message =  {
     username :"darshanmarathe@gmail.com",
-    password : "snakey@3454",
+    password : "snake@3454",
     FirstName : "Darshan",
-    LastName : "Marathe"
+    LastName : "Darshan"
 }
 
 var rule1 = new rules.UniqueEmailRule(1, true)  ; rule1.Message = message;
@@ -18,7 +18,7 @@ var rule4 = new rules.UserFirstAndLastNameShouldNotMatchRule(3, true)  ; rule4.M
 
 
 
-var executer = new AsyncRuleExecuter([rule1 , rule2 , rule3 , rule4]);
+var executer = new AsyncRuleExecuter([rule1 , rule2 , rule3 , rule4] , false);
 (async() => {
     var output:Array<IRule> =  await executer.Execute();
     let passedRules = output.filter((x) => x.RulePassed == true).length;
