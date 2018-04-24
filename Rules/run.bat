@@ -1,0 +1,1 @@
+ts-node Main.ts
